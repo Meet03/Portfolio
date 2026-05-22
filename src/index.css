@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #fafaf8;
+  --bg-card:      #ffffff;
+  --bg-orange:    #fff7f0;
+  --bg-dark:      #0f0f0e;
+
+  --text:         #4a4a48;
+  --text-head:    #0f0f0e;
+  --text-dim:     #9a9a96;
+
+  --orange:       #f97316;
+  --orange-dark:  #c2590e;
+  --orange-light: #fff4ed;
+
+  --border:       #e8e8e4;
+  --border-dark:  #0f0f0e;
+
+  --serif:  'Playfair Display', Georgia, serif;
+  --sans:   'Inter', system-ui, sans-serif;
+  --mono:   'JetBrains Mono', monospace;
+
+  --max:    1200px;
+  --pad:    clamp(24px, 6vw, 96px);
+  --section: clamp(80px, 10vw, 130px);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  color: var(--text-head);
+  line-height: 1.1;
+}
+
+/* ── Utility ── */
+.u-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.u-rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.btn-fill {
+  background: var(--text-head);
+  color: white;
+  border-color: var(--text-head);
+}
+.btn-fill:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-head);
+  border-color: var(--border-dark);
+}
+.btn-outline:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-1px);
+}
+
+/* ── Card ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover {
+  border-color: var(--text-head);
+  transform: translateY(-2px);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both; }
