@@ -10,7 +10,9 @@ export default function Hero() {
       padding: 'clamp(110px,14vh,160px) var(--pad) clamp(60px,8vw,100px)',
       display: 'flex', flexDirection: 'column', justifyContent: 'center',
       maxWidth: 'var(--max)', margin: '0 auto',
+      position: 'relative',
     }}>
+      <div className="hero-glow" />
 
       {/* Eyebrow */}
       <div style={{
@@ -59,7 +61,7 @@ export default function Hero() {
           Mississauga-based engineer with{' '}
           <strong style={{ fontWeight: 600, color:'var(--text-head)' }}>5+ years</strong>{' '}
           building production-grade Java, Spring Boot, and cloud-native microservices across
-          fintech and enterprise — from Infosys to freelance.
+          fintech and enterprise — from Infosys to eMids, India to Canada.
         </p>
 
         <div style={{ flex:'0 0 auto', display:'flex', flexDirection:'column', gap:'14px' }}>

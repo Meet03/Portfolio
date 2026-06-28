@@ -42,16 +42,28 @@ export default function Contact() {
             lineHeight:1.05, letterSpacing:'-0.02em', marginBottom:'32px', maxWidth:'700px' }}>
             Let's build something that scales.
           </h2>
-          <a href="mailto:meetamin65@gmail.com" className="btn" style={{
-            background:'var(--orange)', color:'white', border:'none',
-            fontSize:'15px', padding:'14px 36px',
-            transition:'all 0.2s',
-          }}
-            onMouseEnter={e=>{e.target.style.background='#ea6d0e';e.target.style.transform='translateY(-2px)';}}
-            onMouseLeave={e=>{e.target.style.background='var(--orange)';e.target.style.transform='none';}}
-          >
-            Send a message →
-          </a>
+          <div style={{ display:'flex', gap:'16px', flexWrap:'wrap' }}>
+            <a href="mailto:meetamin65@gmail.com" className="btn" style={{
+              background:'var(--orange)', color:'white', border:'none',
+              fontSize:'15px', padding:'14px 36px',
+              transition:'all 0.2s',
+            }}
+              onMouseEnter={e=>{e.target.style.background='#ea6d0e';e.target.style.transform='translateY(-2px)';}}
+              onMouseLeave={e=>{e.target.style.background='var(--orange)';e.target.style.transform='none';}}
+            >
+              Send a message →
+            </a>
+            <a href="/resume.pdf" download className="btn" style={{
+              background:'transparent', color:'white', border:'1.5px solid rgba(255,255,255,0.3)',
+              fontSize:'15px', padding:'14px 36px',
+              transition:'all 0.2s',
+            }}
+              onMouseEnter={e=>{e.target.style.borderColor='var(--orange)';e.target.style.color='var(--orange)';e.target.style.transform='translateY(-2px)';}}
+              onMouseLeave={e=>{e.target.style.borderColor='rgba(255,255,255,0.3)';e.target.style.color='white';e.target.style.transform='none';}}
+            >
+              Download Resume ↓
+            </a>
+          </div>
         </div>
 
         {/* Contact links grid */}

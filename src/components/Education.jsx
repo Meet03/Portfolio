@@ -7,7 +7,7 @@ const EDU = [
     school: 'Conestoga College',
     location: 'Waterloo, ON',
     year: '2024',
-    note: 'Built 5+ hands-on projects with React, Node.js, MongoDB, and AWS while working as a freelance engineer.',
+    note: 'Completed full-time, building 5+ hands-on projects with React, Node.js, MongoDB, and AWS before joining eMids Canada.',
   },
   {
     degree: 'Bachelor of Technology',

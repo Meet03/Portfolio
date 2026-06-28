@@ -93,7 +93,7 @@ export default function Projects() {
                 transform: inView ? 'none' : 'translateY(16px)',
                 transition: `opacity 0.5s ease ${i*0.12}s, transform 0.5s ease ${i*0.12}s`,
               }}>
-              <div style={{ display:'grid', gridTemplateColumns:'80px 1fr', gap:'clamp(24px,4vw,60px)',
+              <div className="proj-grid" style={{ display:'grid', gridTemplateColumns:'80px 200px 1fr', gap:'clamp(24px,4vw,40px)',
                 alignItems:'start' }}>
 
                 {/* Number */}
@@ -103,6 +103,22 @@ export default function Projects() {
                   transition:'color 0.2s' }}>
                   {p.num}
                 </span>
+
+                {/* Browser-frame mockup */}
+                <div className="browser-frame">
+                  <div className="browser-frame__bar">
+                    <span className="browser-frame__dot" />
+                    <span className="browser-frame__dot" />
+                    <span className="browser-frame__dot" />
+                  </div>
+                  <div className="browser-frame__body" style={{
+                    color: hovered===i ? 'var(--orange)' : 'var(--border)',
+                    fontSize: 'clamp(28px,4vw,40px)',
+                    transition: 'color 0.2s',
+                  }}>
+                    {p.title.slice(0,2).toUpperCase()}
+                  </div>
+                </div>
 
                 <div>
                   <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between',
@@ -155,6 +171,13 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .proj-grid { grid-template-columns: 50px 1fr !important; }
+          .proj-grid .browser-frame { display: none; }
+        }
+      `}</style>
     </section>
   );
 }

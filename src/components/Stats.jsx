@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
 const STATS = [
-  { n: '5+',  label: 'Years of experience'         },
-  { n: '20+', label: 'Production APIs shipped'      },
-  { n: '30%', label: 'Defect reduction at Infosys'  },
-  { n: '35%', label: 'API response time improvement'},
-  { n: '3+',  label: 'Client projects delivered'    },
+  { val: 5,  suffix: '+', label: 'Years of experience'         },
+  { val: 20, suffix: '+', label: 'Production APIs shipped'      },
+  { val: 30, suffix: '%', label: 'Defect reduction at Infosys'  },
+  { val: 35, suffix: '%', label: 'API response time improvement'},
+  { val: 4,  suffix: '',  label: 'Developers led at eMids'      },
 ];
 
 function useInView(ref) {
@@ -16,6 +16,25 @@ function useInView(ref) {
     return () => o.disconnect();
   }, [ref]);
   return v;
+}
+
+function CountUp({ to, suffix, start }) {
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (!start) return;
+    const duration = 900;
+    const t0 = performance.now();
+    let raf;
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setN(Math.round(eased * to));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [start, to]);
+  return <>{n}{suffix}</>;
 }
 
 export default function Stats() {
@@ -43,7 +62,9 @@ export default function Stats() {
               fontFamily: 'var(--serif)', fontWeight: 900, fontStyle: 'italic',
               fontSize: 'clamp(36px,5vw,52px)', color: 'var(--orange)',
               lineHeight: 1, marginBottom: '10px',
-            }}>{s.n}</div>
+            }}>
+              <CountUp to={s.val} suffix={s.suffix} start={inView} />
+            </div>
             <div style={{
               fontFamily: 'var(--sans)', fontSize: '13px',
               color: 'var(--text-dim)', lineHeight: 1.4, fontWeight: 400,

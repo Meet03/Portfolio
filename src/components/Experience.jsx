@@ -2,18 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 
 const JOBS = [
   {
-    role: 'Freelance Backend Software Engineer',
-    company: 'Contract Projects',
-    location: 'Mississauga, ON (Remote)',
-    period: 'Aug 2023 – Present',
-    type: 'Freelance',
+    role: 'Senior Software Engineer',
+    company: 'eMids Technologies',
+    location: 'Canada',
+    period: 'Jan 2025 – Present',
+    type: 'Full-time',
     points: [
-      'Designed and deployed RESTful APIs and optimized PostgreSQL queries for 3+ client projects, improving average API response times by 35% and reducing manual workflow time by 40%.',
-      'Developed reusable Spring Boot REST API templates on GitHub covering JWT auth, OpenAPI/Swagger, pagination, global exception handling, and RBAC.',
-      'Completed Conestoga College Post-Graduate Certificate in Web Development, building 5+ projects with React, Node.js, MongoDB, and AWS.',
-      'Deployed personal projects on EC2 with S3 storage and Lambda-based event-driven architecture.',
+      'Design and deploy optimized RESTful API endpoints using Spring Boot for an enterprise financial-services client, focused on multi-threaded, high-throughput backend services.',
+      'Implement Docker and Kubernetes for microservices deployment, ensuring high availability and fault-tolerant service architecture.',
+      'Maintain CI/CD pipelines integrating automated testing, enabling zero-downtime deployments across all environments.',
     ],
-    stack: ['Spring Boot', 'PostgreSQL', 'JWT', 'AWS', 'React', 'Node.js'],
+    stack: ['Spring Boot', 'Docker', 'Kubernetes', 'AWS', 'CI/CD'],
   },
   {
     role: 'Senior Software Engineer',
@@ -87,7 +86,7 @@ export default function Experience() {
             </h2>
           </div>
           <p style={{ fontSize:'14px', color:'var(--text-dim)', maxWidth:'280px', lineHeight:1.7 }}>
-            5+ years across enterprise, product, and freelance — India to Canada.
+            5+ years across enterprise and product engineering — India to Canada.
           </p>
         </div>
 

@@ -28,6 +28,24 @@
   --section: clamp(80px, 10vw, 130px);
 }
 
+[data-theme='dark'] {
+  --bg:           #14140f;
+  --bg-card:      #1c1c17;
+  --bg-orange:    #241b10;
+  --bg-dark:      #000000;
+
+  --text:         #b8b6ae;
+  --text-head:    #f5f4ef;
+  --text-dim:     #6f6e66;
+
+  --orange:       #fb923c;
+  --orange-dark:  #fdba74;
+  --orange-light: #2a2114;
+
+  --border:       #2c2c25;
+  --border-dark:  #f5f4ef;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -37,6 +55,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -118,3 +137,66 @@ h1, h2, h3, h4 {
   to   { opacity: 1; transform: translateY(0); }
 }
 .fade-up { animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both; }
+
+/* ── Nav active link ── */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 1.5px;
+  background: var(--orange);
+  transition: width 0.25s ease;
+}
+.nav-link.active { color: var(--orange) !important; }
+.nav-link.active::after { width: 100%; }
+
+/* ── Theme toggle ── */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px;
+  border: 1.5px solid var(--border-dark);
+  background: transparent;
+  color: var(--text-head);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
+
+/* ── Browser-frame project mockup ── */
+.browser-frame {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16/10;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.browser-frame:hover { border-color: var(--orange); transform: translateY(-3px); }
+.browser-frame__bar {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 12px;
+  background: var(--bg-orange);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.browser-frame__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+.browser-frame__body {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+/* ── Hero background texture ── */
+.hero-glow {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 100vh;
+  z-index: -1;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, var(--orange-light) 0%, transparent 70%);
+  pointer-events: none;
+}

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import './index.css';
 import Navbar     from './components/Navbar';
 import Hero       from './components/Hero';
@@ -9,9 +10,16 @@ import Education  from './components/Education';
 import Contact    from './components/Contact';
 
 export default function App() {
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   return (
     <>
-      <Navbar />
+      <Navbar theme={theme} onToggleTheme={() => setTheme(t => t === 'light' ? 'dark' : 'light')} />
       <main>
         <Hero />
         <hr className="u-rule" />
