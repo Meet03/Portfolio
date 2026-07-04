@@ -1,11 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import ParticleField from './ParticleField';
+import useExtrudeText from '../hooks/useExtrudeText';
 
-export default function Hero() {
+export default function Hero({ theme }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => { setTimeout(() => setVisible(true), 80); }, []);
 
+  const sectionRef = useRef(null);
+  const extrudeColor = theme === 'dark' ? '#fb923c' : '#f97316';
+  const headingRef = useExtrudeText(sectionRef, extrudeColor);
+
   return (
-    <section style={{
+    <section ref={sectionRef} style={{
       minHeight: '100vh',
       padding: 'clamp(110px,14vh,160px) var(--pad) clamp(60px,8vw,100px)',
       display: 'flex', flexDirection: 'column', justifyContent: 'center',
@@ -13,6 +19,7 @@ export default function Hero() {
       position: 'relative',
     }}>
       <div className="hero-glow" />
+      <ParticleField theme={theme} />
 
       {/* Eyebrow */}
       <div style={{
@@ -30,20 +37,26 @@ export default function Hero() {
       </div>
 
       {/* Main heading */}
-      <h1 style={{
-        fontSize: 'clamp(56px, 9vw, 112px)',
-        fontWeight: 900,
-        color: 'var(--text-head)',
-        lineHeight: 0.95,
-        letterSpacing: '-0.03em',
-        marginBottom: '16px',
+      <div style={{
+        perspective: '600px',
         opacity: visible ? 1 : 0,
         transform: visible ? 'none' : 'translateY(20px)',
         transition: 'all 0.65s ease 0.08s',
+        marginBottom: '16px',
       }}>
-        Meet<br />
-        <span style={{ fontStyle:'italic', color:'var(--orange)' }}>Amin.</span>
-      </h1>
+        <h1 ref={headingRef} style={{
+          fontSize: 'clamp(56px, 9vw, 112px)',
+          fontWeight: 900,
+          color: 'var(--text-head)',
+          lineHeight: 0.95,
+          letterSpacing: '-0.03em',
+          transformStyle: 'preserve-3d',
+          willChange: 'transform',
+        }}>
+          Meet<br />
+          <span style={{ fontStyle:'italic', color:'var(--orange)' }}>Amin.</span>
+        </h1>
+      </div>
 
       {/* Subheading row */}
       <div style={{
@@ -53,16 +66,23 @@ export default function Hero() {
         transform: visible ? 'none' : 'translateY(20px)',
         transition: 'all 0.65s ease 0.16s',
       }}>
-        <p style={{
-          flex: '1 1 380px', maxWidth: '500px',
-          fontSize: 'clamp(16px,2vw,19px)', color:'var(--text)',
-          lineHeight: 1.75, fontWeight: 300,
-        }}>
-          Mississauga-based engineer with{' '}
-          <strong style={{ fontWeight: 600, color:'var(--text-head)' }}>5+ years</strong>{' '}
-          building production-grade Java, Spring Boot, and cloud-native microservices across
-          fintech and enterprise — from Infosys to eMids, India to Canada.
-        </p>
+        <div style={{ flex: '1 1 380px', maxWidth: '500px' }}>
+          <p style={{
+            fontSize: 'clamp(16px,2vw,19px)', color:'var(--text)',
+            lineHeight: 1.75, fontWeight: 300,
+          }}>
+            GTA-based engineer with{' '}
+            <strong style={{ fontWeight: 600, color:'var(--text-head)' }}>5+ years</strong>{' '}
+            building production-grade Java, Spring Boot, and cloud-native microservices across
+            fintech and enterprise — from Infosys to eMids, India to Canada.
+          </p>
+          <p style={{
+            marginTop: '14px', fontFamily:'var(--mono)', fontSize:'12px',
+            letterSpacing:'0.04em', color:'var(--orange)',
+          }}>
+            Open to relocating anywhere in Canada · Seeking full-time opportunities
+          </p>
+        </div>
 
         <div style={{ flex:'0 0 auto', display:'flex', flexDirection:'column', gap:'14px' }}>
           <a href="#projects" className="btn btn-fill">View work</a>

@@ -37,7 +37,7 @@ export default function Navbar({ theme, onToggleTheme }) {
         height: '60px',
         display: 'flex', alignItems: 'center',
         padding: '0 var(--pad)',
-        background: scrolled ? 'rgba(250,250,248,0.92)' : 'transparent',
+        background: scrolled ? 'var(--nav-bg)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
         transition: 'all 0.3s ease',

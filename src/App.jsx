@@ -21,7 +21,7 @@ export default function App() {
     <>
       <Navbar theme={theme} onToggleTheme={() => setTheme(t => t === 'light' ? 'dark' : 'light')} />
       <main>
-        <Hero />
+        <Hero theme={theme} />
         <hr className="u-rule" />
         <Stats />
         <hr className="u-rule" />
@@ -48,7 +48,7 @@ export default function App() {
           Meet Amin
         </span>
         <span style={{ fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--text-dim)', letterSpacing: '0.1em' }}>
-          © {new Date().getFullYear()} — Mississauga, ON
+          © {new Date().getFullYear()} — GTA, ON
         </span>
       </footer>
     </>

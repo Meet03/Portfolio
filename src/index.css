@@ -19,6 +19,8 @@
   --border:       #e8e8e4;
   --border-dark:  #0f0f0e;
 
+  --nav-bg:       rgba(250,250,248,0.92);
+
   --serif:  'Playfair Display', Georgia, serif;
   --sans:   'Inter', system-ui, sans-serif;
   --mono:   'JetBrains Mono', monospace;
@@ -44,6 +46,8 @@
 
   --border:       #2c2c25;
   --border-dark:  #f5f4ef;
+
+  --nav-bg:       rgba(20,20,15,0.85);
 }
 
 html { scroll-behavior: smooth; }
@@ -190,6 +194,48 @@ h1, h2, h3, h4 {
   font-style: italic;
   font-weight: 900;
   letter-spacing: -0.02em;
+  position: relative;
+  overflow: hidden;
+}
+.browser-frame__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* ── No-live-demo project cards: faux code panel ── */
+.code-panel {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-dark);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+  justify-content: center;
+}
+.code-panel__line { display: flex; gap: 10px; align-items: baseline; }
+.code-panel__ln { color: #5a5a52; flex-shrink: 0; width: 14px; text-align: right; }
+.code-panel__kw   { color: #fb923c; }
+.code-panel__str  { color: #a5d6a7; }
+.code-panel__fn   { color: #7dd3fc; }
+.code-panel__plain{ color: #d4d4d0; }
+
+/* ── Project gallery grid ── */
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(20px, 3vw, 32px);
+}
+.project-card {
+  display: block;
+  text-decoration: none;
+  will-change: transform;
 }
 
 /* ── Hero background texture ── */

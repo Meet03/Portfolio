@@ -4,7 +4,7 @@ const LINKS = [
   { label:'Email',    val:'meetamin65@gmail.com',         href:'mailto:meetamin65@gmail.com' },
   { label:'LinkedIn', val:'meet-amin-898904160',          href:'https://linkedin.com/in/meet-amin-898904160' },
   { label:'GitHub',   val:'github.com/Meet03',            href:'https://github.com/Meet03' },
-  { label:'Location', val:'Mississauga, ON · Open to remote', href:null },
+  { label:'Location', val:'GTA, ON · Open to relocate (Canada-wide) · Open to remote', href:null },
 ];
 
 function useInView(ref) {
@@ -35,7 +35,7 @@ export default function Contact() {
         }}>
           <span style={{ fontFamily:'var(--mono)', fontSize:'11px', letterSpacing:'0.18em',
             textTransform:'uppercase', color:'var(--orange)', display:'block', marginBottom:'20px' }}>
-            Open to work
+            Open to full-time work · Open to relocate
           </span>
           <h2 style={{ fontFamily:'var(--serif)', fontStyle:'italic',
             fontSize:'clamp(36px,6vw,72px)', fontWeight:700, color:'white',
@@ -52,16 +52,6 @@ export default function Contact() {
               onMouseLeave={e=>{e.target.style.background='var(--orange)';e.target.style.transform='none';}}
             >
               Send a message →
-            </a>
-            <a href="/resume.pdf" download className="btn" style={{
-              background:'transparent', color:'white', border:'1.5px solid rgba(255,255,255,0.3)',
-              fontSize:'15px', padding:'14px 36px',
-              transition:'all 0.2s',
-            }}
-              onMouseEnter={e=>{e.target.style.borderColor='var(--orange)';e.target.style.color='var(--orange)';e.target.style.transform='translateY(-2px)';}}
-              onMouseLeave={e=>{e.target.style.borderColor='rgba(255,255,255,0.3)';e.target.style.color='white';e.target.style.transform='none';}}
-            >
-              Download Resume ↓
             </a>
           </div>
         </div>
