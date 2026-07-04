@@ -27,19 +27,32 @@ export default function useExtrudeText(containerRef, color, { depth = 14, max = 
     apply(0, 0);
     if (reduced) return;
 
-    const onMove = (e) => {
+    const applyFromPoint = (clientX, clientY) => {
       const rect = container.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      const px = (clientX - rect.left) / rect.width - 0.5;
+      const py = (clientY - rect.top) / rect.height - 0.5;
       apply(py * max * 0.6, px * max);
     };
+
+    const onMove = (e) => applyFromPoint(e.clientX, e.clientY);
     const onLeave = () => apply(0, 0);
+    const onTouchMove = (e) => {
+      const t = e.touches[0];
+      if (t) applyFromPoint(t.clientX, t.clientY);
+    };
+    const onTouchEnd = () => apply(0, 0);
 
     container.addEventListener('mousemove', onMove);
     container.addEventListener('mouseleave', onLeave);
+    container.addEventListener('touchmove', onTouchMove, { passive: true });
+    container.addEventListener('touchend', onTouchEnd);
+    container.addEventListener('touchcancel', onTouchEnd);
     return () => {
       container.removeEventListener('mousemove', onMove);
       container.removeEventListener('mouseleave', onLeave);
+      container.removeEventListener('touchmove', onTouchMove);
+      container.removeEventListener('touchend', onTouchEnd);
+      container.removeEventListener('touchcancel', onTouchEnd);
     };
   }, [containerRef, color, depth, max]);
 

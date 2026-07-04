@@ -23,6 +23,7 @@ export default function ParticleField({ theme }) {
     };
     resize();
     window.addEventListener('resize', resize);
+    window.addEventListener('orientationchange', resize);
 
     const count = Math.min(70, Math.floor((width * height) / 14000));
     const points = Array.from({ length: count }, () => ({
@@ -77,6 +78,7 @@ export default function ParticleField({ theme }) {
 
     return () => {
       window.removeEventListener('resize', resize);
+      window.removeEventListener('orientationchange', resize);
       if (raf) cancelAnimationFrame(raf);
     };
   }, [theme]);

@@ -12,26 +12,38 @@ export default function useTilt({ max = 10, scale = 1.02 } = {}) {
     if (!el) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const onMove = (e) => {
+    const applyFromPoint = (clientX, clientY) => {
       el.style.transition = 'transform 0.05s linear';
       const rect = el.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;   // 0..1
-      const py = (e.clientY - rect.top) / rect.height;   // 0..1
+      const px = (clientX - rect.left) / rect.width;   // 0..1
+      const py = (clientY - rect.top) / rect.height;   // 0..1
       const rotateY = (px - 0.5) * 2 * max;
       const rotateX = (0.5 - py) * 2 * max;
       el.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
     };
 
-    const onLeave = () => {
+    const reset = () => {
       el.style.transition = 'transform 0.4s ease';
       el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
     };
 
+    const onMove = (e) => applyFromPoint(e.clientX, e.clientY);
+    const onTouchMove = (e) => {
+      const t = e.touches[0];
+      if (t) applyFromPoint(t.clientX, t.clientY);
+    };
+
     el.addEventListener('mousemove', onMove);
-    el.addEventListener('mouseleave', onLeave);
+    el.addEventListener('mouseleave', reset);
+    el.addEventListener('touchmove', onTouchMove, { passive: true });
+    el.addEventListener('touchend', reset);
+    el.addEventListener('touchcancel', reset);
     return () => {
       el.removeEventListener('mousemove', onMove);
-      el.removeEventListener('mouseleave', onLeave);
+      el.removeEventListener('mouseleave', reset);
+      el.removeEventListener('touchmove', onTouchMove);
+      el.removeEventListener('touchend', reset);
+      el.removeEventListener('touchcancel', reset);
     };
   }, [max, scale]);
 
