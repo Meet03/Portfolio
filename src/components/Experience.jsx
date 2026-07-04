@@ -2,17 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 
 const JOBS = [
   {
-    role: 'Senior Software Engineer',
-    company: 'eMids Technologies',
+    role: 'Freelance Software Engineer',
+    company: 'Self-Employed',
     location: 'Canada',
     period: 'Jan 2025 – Present',
-    type: 'Full-time',
+    type: 'Freelance',
     points: [
-      'Design and deploy optimized RESTful API endpoints using Spring Boot for an enterprise financial-services client, focused on multi-threaded, high-throughput backend services.',
-      'Implement Docker and Kubernetes for microservices deployment, ensuring high availability and fault-tolerant service architecture.',
-      'Maintain CI/CD pipelines integrating automated testing, enabling zero-downtime deployments across all environments.',
+      'Built and shipped full-stack web applications for small-business clients (restaurants, salons, a convenience store) — online ordering, booking, and inventory-style tools with React front ends and Java Spring Boot REST APIs.',
+      'Engaged by an existing client to optimize a slow-running production system — added targeted indexes, rewrote inefficient queries, and improved overall query performance.',
+      'Containerized services with Docker and orchestrated deployments with Kubernetes, running production workloads on AWS.',
+      'Owned each engagement end-to-end: requirements, architecture, development, deployment, and client handoff .',
     ],
-    stack: ['Spring Boot', 'Docker', 'Kubernetes', 'AWS', 'CI/CD'],
+    stack: ['React', 'Spring Boot', 'SQL Optimization', 'Docker', 'Kubernetes', 'AWS'],
   },
   {
     role: 'Senior Software Engineer',
