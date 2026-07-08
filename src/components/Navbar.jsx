@@ -86,11 +86,6 @@ export default function Navbar({ theme, onToggleTheme }) {
           )}
         </button>
 
-        <a href="mailto:meetamin65@gmail.com" className="btn btn-fill nav-cta"
-          style={{ marginLeft: '20px', padding: '8px 20px', fontSize: '13px' }}>
-          Hire me
-        </a>
-
         {/* Mobile toggle */}
         <button onClick={() => setOpen(!open)} className="nav-mob"
           style={{ display:'none', background:'none', border:'none', cursor:'pointer', padding:'4px', marginLeft:'12px' }}>
@@ -120,10 +115,6 @@ export default function Navbar({ theme, onToggleTheme }) {
             <button onClick={onToggleTheme} className="theme-toggle">
               {theme === 'dark' ? '☀' : '☾'}
             </button>
-            <a href="mailto:meetamin65@gmail.com"
-              style={{ fontFamily:'var(--sans)', fontSize:'15px', fontWeight:600, color:'var(--orange)' }}>
-              Hire me →
-            </a>
           </div>
         </div>
       )}
