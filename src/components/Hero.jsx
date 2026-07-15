@@ -74,7 +74,7 @@ export default function Hero({ theme }) {
             GTA-based engineer with{' '}
             <strong style={{ fontWeight: 600, color:'var(--text-head)' }}>5+ years</strong>{' '}
             building production-grade Java, Spring Boot, and cloud-native microservices across
-            fintech and enterprise — from Infosys to eMids, India to Canada.
+            fintech and enterprise — from Infosys and eMids in India to independent contract work in Canada.
           </p>
           <p style={{
             marginTop: '14px', fontFamily:'var(--mono)', fontSize:'12px',

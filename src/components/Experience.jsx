@@ -3,17 +3,19 @@ import { useEffect, useRef, useState } from 'react';
 const JOBS = [
   {
     role: 'Senior Software Engineer',
-    company: 'eMids Technologies',
+    company: 'Contractor',
     location: 'Remote, Canada',
     period: 'Jan 2025 – Present',
-    type: 'Full-time',
+    type: 'Contract',
     points: [
-      'Led a team of developers to deliver high-impact backend features aligned with product goals.',
-      'Improved system throughput by designing optimized Spring Boot API endpoints with PostgreSQL, documented via OpenAPI/Swagger.',
-      'Implemented Docker and Kubernetes for microservices deployment ensuring high availability and fault tolerance.',
-      'Established CI/CD pipelines with Jenkins and Maven for automated testing and zero-downtime deploys.',
+      'Designed and developed Java/Spring Boot microservices and RESTful APIs as part of a cross-functional Agile team.',
+      'Applied object-oriented design and SOLID principles, upheld through peer code review.',
+      'Delivered containerized deployments through Docker/Kubernetes with CI/CD pipelines on Jenkins.',
+      'Wrote JUnit/Mockito automated test coverage across new and existing services.',
+      'Led a team of 4 developers as technical lead, driving architecture and design reviews, while delivering Spring Boot microservices in an Agile environment.',
+      'Implemented Docker, Kubernetes, and OpenShift for microservices deployment, ensuring high availability and fault-tolerant architecture.',
     ],
-    stack: ['Spring Boot', 'PostgreSQL', 'Docker', 'Kubernetes', 'Jenkins'],
+    stack: ['Spring Boot', 'Docker', 'Kubernetes', 'OpenShift', 'Jenkins'],
   },
   {
     role: 'Senior Software Engineer',
@@ -22,12 +24,9 @@ const JOBS = [
     period: 'Feb 2023 – Jul 2023',
     type: 'Full-time',
     points: [
-      'Led a team of 4 developers to deliver high-impact backend features aligned with product goals.',
-      'Improved system throughput by 20% by designing 10 optimized Spring Boot API endpoints with PostgreSQL, documented via OpenAPI/Swagger.',
-      'Implemented Docker and Kubernetes for microservices deployment ensuring high availability and fault tolerance.',
-      'Established CI/CD pipelines with Jenkins and Maven for automated testing and zero-downtime deploys.',
+      'Designed and deployed 10 optimized Spring Boot REST API endpoints with PostgreSQL, improving system throughput by 20%, documented via OpenAPI/Swagger.',
     ],
-    stack: ['Spring Boot', 'PostgreSQL', 'Docker', 'Kubernetes', 'Jenkins'],
+    stack: ['Spring Boot', 'REST APIs', 'PostgreSQL'],
   },
   {
     role: 'Digital Engineer Specialist',

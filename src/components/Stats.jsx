@@ -5,7 +5,7 @@ const STATS = [
   { val: 20, suffix: '+', label: 'Production APIs shipped'      },
   { val: 30, suffix: '%', label: 'Defect reduction at Infosys'  },
   { val: 35, suffix: '%', label: 'API response time improvement'},
-  { val: 4,  suffix: '',  label: 'Developers led at eMids'      },
+  { val: 4,  suffix: '',  label: 'Developers led as tech lead'  },
 ];
 
 function useInView(ref) {
