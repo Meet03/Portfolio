@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import ParticleField from './ParticleField';
 import useExtrudeText from '../hooks/useExtrudeText';
 
 export default function Hero({ theme }) {
@@ -19,7 +18,6 @@ export default function Hero({ theme }) {
       position: 'relative',
     }}>
       <div className="hero-glow" />
-      <ParticleField theme={theme} />
 
       {/* Eyebrow */}
       <div style={{
@@ -71,10 +69,12 @@ export default function Hero({ theme }) {
             fontSize: 'clamp(16px,2vw,19px)', color:'var(--text)',
             lineHeight: 1.75, fontWeight: 300,
           }}>
-            GTA-based engineer with{' '}
             <strong style={{ fontWeight: 600, color:'var(--text-head)' }}>5+ years</strong>{' '}
-            building production-grade Java, Spring Boot, and cloud-native microservices across
-            fintech and enterprise — from Infosys and eMids in India to independent contract work in Canada.
+            of Spring Boot microservices across fintech and enterprise — 20+ production APIs at
+            Infosys with{' '}
+            <strong style={{ fontWeight: 600, color:'var(--text-head)' }}>
+              zero critical post-deploy failures across 24 months
+            </strong>. Infosys and eMids in India; now independent contract work in the GTA.
           </p>
           <p style={{
             marginTop: '14px', fontFamily:'var(--mono)', fontSize:'12px',
@@ -87,19 +87,11 @@ export default function Hero({ theme }) {
         <div style={{ flex:'0 0 auto', display:'flex', flexDirection:'column', gap:'14px' }}>
           <a href="#projects" className="btn btn-fill">View work</a>
           <a href="mailto:meetamin65@gmail.com" className="btn btn-outline">Get in touch</a>
-          <div style={{ display:'flex', gap:'20px', marginTop:'6px' }}>
-            <a href="https://github.com/Meet03" target="_blank" rel="noreferrer"
-              style={{ fontFamily:'var(--mono)', fontSize:'11px', color:'var(--text-dim)',
-                letterSpacing:'0.05em', transition:'color 0.15s' }}
-              onMouseEnter={e=>e.target.style.color='var(--text-head)'}
-              onMouseLeave={e=>e.target.style.color='var(--text-dim)'}>
+          <div style={{ display:'flex', gap:'24px' }}>
+            <a href="https://github.com/Meet03" target="_blank" rel="noreferrer" className="hero-link">
               GitHub ↗
             </a>
-            <a href="https://linkedin.com/in/meet-amin-898904160" target="_blank" rel="noreferrer"
-              style={{ fontFamily:'var(--mono)', fontSize:'11px', color:'var(--text-dim)',
-                letterSpacing:'0.05em', transition:'color 0.15s' }}
-              onMouseEnter={e=>e.target.style.color='var(--text-head)'}
-              onMouseLeave={e=>e.target.style.color='var(--text-dim)'}>
+            <a href="https://linkedin.com/in/meet-amin-898904160" target="_blank" rel="noreferrer" className="hero-link">
               LinkedIn ↗
             </a>
           </div>

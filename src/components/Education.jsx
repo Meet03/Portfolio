@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import useInView from '../hooks/useInView';
 
 const EDU = [
   {
@@ -19,19 +19,8 @@ const EDU = [
   },
 ];
 
-function useInView(ref) {
-  const [v, setV] = useState(false);
-  useEffect(() => {
-    const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold:0.1 });
-    if (ref.current) o.observe(ref.current);
-    return () => o.disconnect();
-  }, [ref]);
-  return v;
-}
-
 export default function Education() {
-  const ref = useRef(null);
-  const inView = useInView(ref);
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
     <section id="education" ref={ref} style={{ padding:'var(--section) var(--pad)' }}>

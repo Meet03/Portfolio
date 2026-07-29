@@ -1,9 +1,31 @@
-import { useEffect, useRef, useState } from 'react';
-import useTilt from '../hooks/useTilt';
+import { useState } from 'react';
+import useInView from '../hooks/useInView';
 
 const PROJECTS = [
   {
     num: '01',
+    title: 'Spring Boot Enterprise API Template',
+    period: '2025',
+    desc: 'A reusable, event-driven microservice template built to cut new-service bootstrap time from days to hours — Kafka messaging, observability, and deployment wired in from the first commit.',
+    points: [
+      'Designed a reusable, event-driven microservice template using Kafka for asynchronous messaging between services',
+      'Instrumented services with observability hooks — structured logging, metrics, and health checks — for production-grade monitoring out of the box',
+      'Containerized with Docker and defined Kubernetes manifests for consistent deployment across environments',
+      'Set up a CI/CD pipeline to automate build, test, and deploy for any service scaffolded from the template',
+    ],
+    stack: ['Java 17', 'Spring Boot', 'Kafka', 'Docker', 'Kubernetes', 'CI/CD'],
+    visibility: 'Private',
+    codeFile: 'OrderEventListener.java',
+    code: [
+      ['1', 'kw', '@KafkaListener', 'plain', '(topics = ', 'str', '"orders"', 'plain', ')'],
+      ['2', 'kw', 'public void', 'fn', ' onOrder', 'plain', '(OrderEvent e) {'],
+      ['3', 'plain', '  metrics.', 'fn', 'counter', 'str', '("orders.received")', 'plain', '.increment()'],
+      ['4', 'plain', '  orderService.', 'fn', 'process', 'plain', '(e)'],
+      ['5', 'plain', '}'],
+    ],
+  },
+  {
+    num: '02',
     title: 'RaahWebsite',
     period: '2025',
     desc: 'React 19 + TypeScript rebuild of raahtech.com — improved visuals, dark/light theming, and performance-first architecture for an Identity & Access Management consultancy.',
@@ -19,7 +41,7 @@ const PROJECTS = [
     screenshot: '/projects/raah-website.png',
   },
   {
-    num: '02',
+    num: '03',
     title: 'IndianParadiseRestaurant',
     period: '2024',
     desc: 'Restaurant marketing site — menu, location, and ordering info for a real local business, built and deployed end to end.',
@@ -35,18 +57,20 @@ const PROJECTS = [
     screenshot: '/projects/indian-paradise.png',
   },
   {
-    num: '03',
+    num: '04',
     title: 'TiffinConnect',
     period: 'Sep – Dec 2024',
     desc: 'Multi-user subscription and delivery platform serving 3 roles — admin, vendor, and customer — with real-time order tracking and role-based access control. Capstone project, Conestoga College.',
     points: [
-      'Optimized MongoDB schemas reducing average query time by 40%',
-      'Integrated Socket.io for real-time delivery tracking at sub-200ms latency',
-      'JWT authentication with Spring Security–style RBAC and full OpenAPI docs',
+      'Built a full-stack food-ordering platform with a React front end and Node.js backend, backed by MongoDB',
+      'Implemented JWT-based authentication and authorization to secure user sessions and API access',
+      'Used Redis caching and Socket.io for real-time order-tracking updates delivered in under 200ms',
+      'Optimized MongoDB schema design and indexing, cutting query time by 40%',
     ],
-    stack: ['Node.js', 'MongoDB', 'JWT', 'Socket.io', 'React', 'Express.js'],
+    stack: ['Node.js', 'React', 'MongoDB', 'JWT', 'Socket.io', 'Redis', 'Express.js'],
     repo: 'https://github.com/Meet03/TiffinConnect',
     visibility: 'Public',
+    codeFile: 'routes/orders.js',
     code: [
       ['1', 'kw', 'router.post', 'plain', "('/orders', "],
       ['2', 'fn', '  authenticate', 'plain', ', async (req, res) => {'],
@@ -56,7 +80,7 @@ const PROJECTS = [
     ],
   },
   {
-    num: '04',
+    num: '05',
     title: 'BookEasy',
     period: '2024 – Present',
     desc: 'Full-stack local service booking platform for Mississauga & GTA. Connects customers with local businesses via real-time slot booking, a business dashboard, and live analytics.',
@@ -68,6 +92,7 @@ const PROJECTS = [
     stack: ['Node.js', 'Express.js', 'MongoDB', 'JWT', 'HTML', 'CSS', 'JavaScript'],
     repo: 'https://github.com/Meet03/BookEasy',
     visibility: 'Private',
+    codeFile: 'services/availability.js',
     code: [
       ['1', 'kw', 'async function', 'fn', ' getAvailability', 'plain', '(slotId) {'],
       ['2', 'plain', '  const slot = ', 'fn', 'await Slot.findById', 'plain', '(slotId)'],
@@ -77,7 +102,7 @@ const PROJECTS = [
     ],
   },
   {
-    num: '05',
+    num: '06',
     title: 'Cupid Site',
     period: '2024',
     desc: 'Full website built for Sunny — Cupid Mantra. A Next.js + TypeScript client project delivering a polished, brand-tailored web experience.',
@@ -89,6 +114,7 @@ const PROJECTS = [
     stack: ['TypeScript', 'Next.js', 'React', 'CSS'],
     repo: 'https://github.com/Meet03/cupid-site',
     visibility: 'Private',
+    codeFile: 'app/page.tsx',
     code: [
       ['1', 'kw', 'export default function', 'fn', ' HomePage', 'plain', '() {'],
       ['2', 'kw', '  return', 'plain', ' ('],
@@ -98,32 +124,29 @@ const PROJECTS = [
     ],
   },
   {
-    num: '06',
+    num: '07',
     title: 'Portfolio',
     period: '2025 – Present',
-    desc: "This site. Yes — you're looking at it right now. A React + Vite build with a hand-rolled editorial design system, dark mode, and (as of this pass) a three.js hero accent.",
+    desc: "This site. Yes — you're looking at it right now. A React + Vite build with a hand-rolled editorial design system, dark mode, and a canvas-rendered particle field behind the hero.",
     points: [
-      'React 18 + Vite, zero UI framework — every component styled by hand',
+      'React 18 + Vite, zero UI framework and zero animation library — every component styled by hand',
       'Light/dark theme with persisted preference, scroll-aware nav, IntersectionObserver reveals',
-      'Recursion achievement unlocked: a portfolio project featured inside its own portfolio',
+      'Hand-written Canvas 2D particle field and a CSS-extrusion heading effect, both honouring prefers-reduced-motion',
     ],
-    stack: ['React', 'Vite', 'Three.js', 'React Three Fiber'],
+    stack: ['React 18', 'Vite', 'Canvas 2D', 'CSS Custom Properties'],
     href: 'https://portfolio-five-beta-39.vercel.app',
     repo: 'https://github.com/Meet03/Portfolio',
     visibility: 'Public',
-    meta: true,
+    codeFile: 'hooks/useExtrudeText.js',
+    code: [
+      ['1', 'kw', 'for', 'plain', ' (let i = 1; i <= depth; i++) {'],
+      ['2', 'plain', '  const a = ', 'fn', 'Math.round', 'plain', '((1 - i/depth) * 50 + 8)'],
+      ['3', 'plain', '  layers.', 'fn', 'push', 'plain', '(`${i*0.35}px ${i*0.55}px 0`)'],
+      ['4', 'plain', '}'],
+      ['5', 'plain', 'text.style.', 'fn', 'textShadow', 'plain', ' = layers.', 'fn', 'join', 'str', "(',')"],
+    ],
   },
 ];
-
-function useInView(ref) {
-  const [v, setV] = useState(false);
-  useEffect(() => {
-    const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold:0.1 });
-    if (ref.current) o.observe(ref.current);
-    return () => o.disconnect();
-  }, [ref]);
-  return v;
-}
 
 function CodePanel({ lines }) {
   const classMap = { kw: 'code-panel__kw', str: 'code-panel__str', fn: 'code-panel__fn', plain: 'code-panel__plain' };
@@ -149,16 +172,17 @@ function CodePanel({ lines }) {
 }
 
 function ProjectCard({ p, index, inView }) {
-  const tiltRef = useTilt({ max: 6, scale: 1.015 });
   const [hovered, setHovered] = useState(false);
   const targetHref = p.href || p.repo;
+  const isCode = !p.screenshot && !!p.code;
+  const Wrapper = targetHref ? 'a' : 'div';
+  const linkProps = targetHref
+    ? { href: targetHref, target: '_blank', rel: 'noreferrer' }
+    : {};
 
   return (
-    <a
-      ref={tiltRef}
-      href={targetHref}
-      target="_blank"
-      rel="noreferrer"
+    <Wrapper
+      {...linkProps}
       className="project-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -168,28 +192,22 @@ function ProjectCard({ p, index, inView }) {
         transition: `opacity 0.5s ease ${index * 0.08}s, transform 0.5s ease ${index * 0.08}s`,
       }}
     >
-      <div className="browser-frame">
+      <div className={`browser-frame${isCode ? ' browser-frame--code' : ''}`}>
         <div className="browser-frame__bar">
-          <span className="browser-frame__dot" />
-          <span className="browser-frame__dot" />
-          <span className="browser-frame__dot" />
+          {isCode ? (
+            <span className="browser-frame__file">{p.codeFile}</span>
+          ) : (
+            <>
+              <span className="browser-frame__dot" />
+              <span className="browser-frame__dot" />
+              <span className="browser-frame__dot" />
+            </>
+          )}
         </div>
         <div className="browser-frame__body">
-          {p.screenshot ? (
-            <img className="browser-frame__img" src={p.screenshot} alt={`${p.title} screenshot`} loading="lazy" />
-          ) : p.code ? (
-            <CodePanel lines={p.code} />
-          ) : (
-            <div style={{
-              width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              background: 'linear-gradient(135deg, var(--orange-light), var(--bg-card))',
-              color: hovered ? 'var(--orange)' : 'var(--border)', transition: 'color 0.2s',
-              fontStyle: 'italic', fontWeight: 900, fontSize: 'clamp(22px,3vw,32px)',
-              fontFamily: 'var(--serif)', textAlign: 'center', padding: '0 16px',
-            }}>
-              You are here ↻
-            </div>
-          )}
+          {p.screenshot
+            ? <img className="browser-frame__img" src={p.screenshot} alt={`${p.title} screenshot`} loading="lazy" />
+            : <CodePanel lines={p.code} />}
         </div>
       </div>
 
@@ -237,18 +255,20 @@ function ProjectCard({ p, index, inView }) {
         </div>
 
         <div style={{ display:'flex', alignItems:'center', gap:'8px',
-          fontFamily:'var(--mono)', fontSize:'12px', color:'var(--orange)' }}>
-          {p.href ? 'Live demo' : 'View source'}
-          <span style={{ transform: hovered ? 'translateX(4px)' : 'none', transition:'transform 0.2s' }}>↗</span>
+          fontFamily:'var(--mono)', fontSize:'12px',
+          color: targetHref ? 'var(--orange)' : 'var(--text-dim)' }}>
+          {p.href ? 'Live demo' : targetHref ? 'View source' : 'Private repo — available on request'}
+          {targetHref && (
+            <span style={{ transform: hovered ? 'translateX(4px)' : 'none', transition:'transform 0.2s' }}>↗</span>
+          )}
         </div>
       </div>
-    </a>
+    </Wrapper>
   );
 }
 
 export default function Projects() {
-  const ref = useRef(null);
-  const inView = useInView(ref);
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
     <section id="projects" ref={ref} style={{ padding:'var(--section) var(--pad)' }}>

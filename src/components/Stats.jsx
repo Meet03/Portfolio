@@ -1,22 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import useInView from '../hooks/useInView';
 
 const STATS = [
-  { val: 5,  suffix: '+', label: 'Years of experience'         },
-  { val: 20, suffix: '+', label: 'Production APIs shipped'      },
-  { val: 30, suffix: '%', label: 'Defect reduction at Infosys'  },
-  { val: 35, suffix: '%', label: 'API response time improvement'},
-  { val: 4,  suffix: '',  label: 'Developers led as tech lead'  },
+  { val: 5,  suffix: '+', label: 'Years of experience'          },
+  { val: 20, suffix: '+', label: 'Production APIs shipped'       },
+  { val: 30, suffix: '%', label: 'Defect reduction at Infosys'   },
+  { val: 20, suffix: '%', label: 'Throughput gain at eMids'      },
+  { val: 4,  suffix: '',  label: 'Developers led as tech lead'   },
 ];
-
-function useInView(ref) {
-  const [v, setV] = useState(false);
-  useEffect(() => {
-    const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold:0.2 });
-    if (ref.current) o.observe(ref.current);
-    return () => o.disconnect();
-  }, [ref]);
-  return v;
-}
 
 function CountUp({ to, suffix, start }) {
   const [n, setN] = useState(0);
@@ -38,8 +29,7 @@ function CountUp({ to, suffix, start }) {
 }
 
 export default function Stats() {
-  const ref = useRef(null);
-  const inView = useInView(ref);
+  const [ref, inView] = useInView({ threshold: 0.2 });
 
   return (
     <section ref={ref} style={{ padding: '0 var(--pad)' }}>

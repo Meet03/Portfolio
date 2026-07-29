@@ -50,6 +50,19 @@
     </script>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14140f" media="(prefers-color-scheme: dark)" />
+
+    <!-- Apply the stored theme before first paint so dark-mode users never see a white flash -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

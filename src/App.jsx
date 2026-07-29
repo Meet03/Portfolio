@@ -10,7 +10,11 @@ import Education  from './components/Education';
 import Contact    from './components/Contact';
 
 export default function App() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  // The inline script in index.html already resolved the theme before first paint —
+  // read it back so React agrees with what is already on screen.
+  const [theme, setTheme] = useState(
+    () => document.documentElement.getAttribute('data-theme') || 'light'
+  );
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);

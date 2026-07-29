@@ -1,29 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
+import useInView from '../hooks/useInView';
 
 const GROUPS = [
-  { cat: 'Languages',        items: ['Java', 'SQL', 'JavaScript'] },
-  { cat: 'Backend & APIs',   items: ['Spring Boot', 'Spring Security', 'Node.js', 'Express.js', 'REST', 'gRPC', 'OAuth 2.0', 'JWT'] },
-  { cat: 'Cloud & DevOps',   items: ['AWS (EC2, S3, Lambda)', 'Docker', 'Kubernetes', 'Jenkins', 'Terraform', 'Kafka', 'CI/CD'] },
-  { cat: 'Databases',        items: ['PostgreSQL', 'MySQL', 'MS SQL Server', 'MongoDB', 'Redis'] },
-  { cat: 'Testing & Quality',items: ['JUnit', 'Mockito', 'RestAssured', 'Selenium', 'SonarQube'] },
+  { cat: 'Languages',         items: ['Java 8 / 11 / 17', 'SQL', 'PL/SQL', 'JavaScript', 'TypeScript'] },
+  { cat: 'Backend & APIs',    items: ['Spring Boot', 'Spring MVC', 'Spring Security', 'Spring Data JPA', 'Hibernate', 'REST', 'SOAP / XML', 'Node.js', 'Express.js', 'OAuth 2.0', 'JWT'] },
+  { cat: 'Cloud & DevOps',    items: ['AWS (EC2, S3, Lambda)', 'Azure', 'OpenShift', 'Docker', 'Kubernetes', 'Jenkins', 'Kafka', 'CI/CD', 'Git'] },
+  { cat: 'Databases',         items: ['Oracle', 'PostgreSQL', 'MS SQL Server', 'MySQL', 'MongoDB', 'Redis'] },
+  { cat: 'Testing & Quality', items: ['JUnit', 'Mockito', 'RestAssured', 'Selenium', 'SonarQube'] },
   { cat: 'Build & Monitoring',items: ['Maven', 'Gradle', 'ELK Stack', 'OpenAPI / Swagger', 'Postman'] },
-  { cat: 'Architecture',     items: ['Microservices', 'System Design', 'API Gateway', 'Load Balancing', 'Event-driven'] },
-  { cat: 'Frontend',         items: ['React', 'Redux', 'HTML5', 'CSS3', 'Bootstrap'] },
+  { cat: 'Architecture',      items: ['Microservices', 'System Design', 'Event-driven', 'API Gateway', 'Design Patterns'] },
+  { cat: 'Frontend',          items: ['React', 'Angular 8+', 'HTML5', 'CSS3', 'Bootstrap'] },
 ];
 
-function useInView(ref) {
-  const [v, setV] = useState(false);
-  useEffect(() => {
-    const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold:0.05 });
-    if (ref.current) o.observe(ref.current);
-    return () => o.disconnect();
-  }, [ref]);
-  return v;
-}
-
 export default function Skills() {
-  const ref = useRef(null);
-  const inView = useInView(ref);
+  const [ref, inView] = useInView({ threshold: 0.05 });
 
   return (
     <section id="skills" ref={ref} style={{ padding:'var(--section) var(--pad)' }}>

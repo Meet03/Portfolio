@@ -8,6 +8,20 @@ const NAV = [
   { label: 'Contact',    href: '#contact'    },
 ];
 
+function ThemeIcon({ theme }) {
+  return theme === 'dark' ? (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.4"/>
+      <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.5 3.5l1.4 1.4M11.1 11.1l1.4 1.4M3.5 12.5l1.4-1.4M11.1 4.9l1.4-1.4"
+        stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    </svg>
+  ) : (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M13.5 9.5A6 6 0 016.5 2.5 6 6 0 1013.5 9.5z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
 export default function Navbar({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
@@ -73,23 +87,15 @@ export default function Navbar({ theme, onToggleTheme }) {
         {/* Theme toggle */}
         <button onClick={onToggleTheme} className="theme-toggle" style={{ marginLeft: '28px' }}
           aria-label="Toggle dark mode" title="Toggle dark mode">
-          {theme === 'dark' ? (
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <circle cx="8" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.4"/>
-              <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.5 3.5l1.4 1.4M11.1 11.1l1.4 1.4M3.5 12.5l1.4-1.4M11.1 4.9l1.4-1.4"
-                stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-            </svg>
-          ) : (
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M13.5 9.5A6 6 0 016.5 2.5 6 6 0 1013.5 9.5z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
-            </svg>
-          )}
+          <ThemeIcon theme={theme} />
         </button>
 
         {/* Mobile toggle */}
         <button onClick={() => setOpen(!open)} className="nav-mob"
-          style={{ display:'none', background:'none', border:'none', cursor:'pointer', padding:'4px', marginLeft:'12px' }}>
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}
+          style={{ display:'none', background:'none', border:'none', cursor:'pointer',
+            padding:'11px', margin:'-11px -11px -11px 1px' }}>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
             {open
               ? <path d="M4 4L18 18M4 18L18 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
               : <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
@@ -112,8 +118,9 @@ export default function Navbar({ theme, onToggleTheme }) {
             </a>
           ))}
           <div style={{ display:'flex', alignItems:'center', gap:'16px' }}>
-            <button onClick={onToggleTheme} className="theme-toggle">
-              {theme === 'dark' ? '☀' : '☾'}
+            <button onClick={onToggleTheme} className="theme-toggle"
+              aria-label="Toggle dark mode" title="Toggle dark mode">
+              <ThemeIcon theme={theme} />
             </button>
           </div>
         </div>

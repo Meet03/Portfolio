@@ -10,7 +10,7 @@
 
   --text:         #4a4a48;
   --text-head:    #0f0f0e;
-  --text-dim:     #9a9a96;
+  --text-dim:     #6b6b67;  /* 5.1:1 on --bg — WCAG AA */
 
   --orange:       #f97316;
   --orange-dark:  #c2590e;
@@ -38,7 +38,7 @@
 
   --text:         #b8b6ae;
   --text-head:    #f5f4ef;
-  --text-dim:     #6f6e66;
+  --text-dim:     #8d8b83;  /* 5.0:1 on --bg-card — WCAG AA */
 
   --orange:       #fb923c;
   --orange-dark:  #fdba74;
@@ -63,6 +63,13 @@ body {
 }
 
 a { color: inherit; text-decoration: none; }
+
+/* ── Focus: keyboard users must be able to see where they are ── */
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+:focus:not(:focus-visible) { outline: none; }
 
 h1, h2, h3, h4 {
   font-family: var(--serif);
@@ -187,6 +194,33 @@ h1, h2, h3, h4 {
   flex-shrink: 0;
 }
 .browser-frame__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+
+/* Code cards get editor chrome (filename) instead of browser chrome (dots), so a
+   card without a screenshot reads as "here's the source" rather than "image missing". */
+.browser-frame--code .browser-frame__bar {
+  background: var(--bg-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.browser-frame__file {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: #8a8a82;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.browser-frame__file::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--orange);
+  flex-shrink: 0;
+}
 .browser-frame__body {
   flex: 1;
   display: flex; align-items: center; justify-content: center;
@@ -235,8 +269,20 @@ h1, h2, h3, h4 {
 .project-card {
   display: block;
   text-decoration: none;
-  will-change: transform;
 }
+
+/* ── Hero social links: 44px hit area without growing the text ── */
+.hero-link {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  transition: color 0.15s;
+}
+.hero-link:hover { color: var(--text-head); }
 
 /* ── Hero background texture ── */
 .hero-glow {

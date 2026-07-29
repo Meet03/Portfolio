@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import useInView from '../hooks/useInView';
 
 const LINKS = [
   { label:'Email',    val:'meetamin65@gmail.com',         href:'mailto:meetamin65@gmail.com' },
@@ -7,19 +7,8 @@ const LINKS = [
   { label:'Location', val:'GTA, ON · Open to relocate (Canada-wide) · Open to remote', href:null },
 ];
 
-function useInView(ref) {
-  const [v, setV] = useState(false);
-  useEffect(() => {
-    const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold:0.1 });
-    if (ref.current) o.observe(ref.current);
-    return () => o.disconnect();
-  }, [ref]);
-  return v;
-}
-
 export default function Contact() {
-  const ref = useRef(null);
-  const inView = useInView(ref);
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
     <section id="contact" ref={ref} style={{ padding:'var(--section) var(--pad)' }}>
@@ -63,10 +52,9 @@ export default function Contact() {
             const inner = (
               <div style={{ padding:'clamp(20px,3vw,28px)',
                 background:'var(--bg-card)', height:'100%',
-                transition:'background 0.15s',
                 opacity: inView ? 1 : 0,
                 transform: inView ? 'none' : 'translateY(10px)',
-                transitionDelay: `${0.1 + i*0.07}s`,
+                transition: `background 0.15s, opacity 0.5s ease ${0.1 + i*0.07}s, transform 0.5s ease ${0.1 + i*0.07}s`,
               }}>
                 <p style={{ fontFamily:'var(--mono)', fontSize:'10px', letterSpacing:'0.15em',
                   textTransform:'uppercase', color:'var(--text-dim)', marginBottom:'8px' }}>
