@@ -1,14 +1,14 @@
 import useInView from '../hooks/useInView';
 
 const GROUPS = [
-  { cat: 'Languages',         items: ['Java 8 / 11 / 17', 'SQL', 'PL/SQL', 'JavaScript', 'TypeScript'] },
-  { cat: 'Backend & APIs',    items: ['Spring Boot', 'Spring MVC', 'Spring Security', 'Spring Data JPA', 'Hibernate', 'REST', 'SOAP / XML', 'Node.js', 'Express.js', 'OAuth 2.0', 'JWT'] },
-  { cat: 'Cloud & DevOps',    items: ['AWS (EC2, S3, Lambda)', 'Azure', 'OpenShift', 'Docker', 'Kubernetes', 'Jenkins', 'Kafka', 'CI/CD', 'Git'] },
-  { cat: 'Databases',         items: ['Oracle', 'PostgreSQL', 'MS SQL Server', 'MySQL', 'MongoDB', 'Redis'] },
-  { cat: 'Testing & Quality', items: ['JUnit', 'Mockito', 'RestAssured', 'Selenium', 'SonarQube'] },
-  { cat: 'Build & Monitoring',items: ['Maven', 'Gradle', 'ELK Stack', 'OpenAPI / Swagger', 'Postman'] },
-  { cat: 'Architecture',      items: ['Microservices', 'System Design', 'Event-driven', 'API Gateway', 'Design Patterns'] },
-  { cat: 'Frontend',          items: ['React', 'Angular 8+', 'HTML5', 'CSS3', 'Bootstrap'] },
+  { cat: 'Languages',         items: ['Java 8 / 11 / 17', 'Java EE / J2EE', 'SQL', 'PL/SQL', 'JavaScript', 'TypeScript'] },
+  { cat: 'Core Java',         items: ['Multithreading & Concurrency', 'Collections', 'Exception Handling', 'JVM Performance Tuning', 'Data Structures', 'Design Patterns', 'SOLID'] },
+  { cat: 'Backend & APIs',    items: ['Spring Boot', 'Spring MVC', 'Spring Security', 'Spring Data JPA', 'Spring Cloud', 'Hibernate', 'REST', 'SOAP / XML', 'OAuth 2.0', 'JWT'] },
+  { cat: 'Architecture',      items: ['Microservices', 'System Design', 'API Gateway', 'Service Discovery', 'Circuit Breaker', 'Distributed Tracing', 'Event-driven', 'Idempotency & Reconciliation'] },
+  { cat: 'Databases',         items: ['Oracle', 'PostgreSQL', 'MS SQL Server', 'MySQL', 'Data Modelling', 'Indexing', 'Query Optimization'] },
+  { cat: 'Cloud & DevOps',    items: ['AWS (EC2, S3, Lambda)', 'Azure', 'OpenShift', 'Docker', 'Kubernetes', 'Jenkins', 'CI/CD', 'Git', 'Maven'] },
+  { cat: 'Testing & Quality', items: ['JUnit', 'Mockito', 'RestAssured', 'TDD', 'SonarQube', 'OpenAPI / Swagger', 'Postman'] },
+  { cat: 'Personal Projects', items: ['Kafka', 'React', 'Node.js', 'Express.js', 'MongoDB', 'Redis', 'Socket.io', 'HTML5', 'CSS3'] },
 ];
 
 export default function Skills() {
@@ -29,7 +29,7 @@ export default function Skills() {
             </h2>
           </div>
           <p style={{ maxWidth:'340px', fontSize:'14px', color:'var(--text-dim)', lineHeight:1.7 }}>
-            Full-stack awareness with a deep backend specialisation in Java, distributed systems, and cloud infrastructure.
+            Deep backend specialisation in Java and Spring Boot, distributed systems, and the relational data layer — with the personal-project stack listed separately, not blended in.
           </p>
         </div>
 
@@ -75,6 +75,19 @@ export default function Skills() {
             </div>
           ))}
         </div>
+
+        {/* Honesty note: mirrors exactly what the resume and cover letters state,
+            so a recruiter cross-checking the two never finds a discrepancy. */}
+        <p style={{
+          marginTop: '24px', fontSize: '13px', lineHeight: 1.7,
+          color: 'var(--text-dim)', maxWidth: '760px',
+        }}>
+          <strong style={{ color: 'var(--text-head)', fontWeight: 600 }}>On the last group:</strong>{' '}
+          those are personal-project depth, not production experience. Production event-driven work
+          is AWS Lambda and S3 rather than a Kafka cluster, and the JavaScript stack comes from a
+          full-stack side project. Production depth is Java and Spring Boot on Oracle, MS SQL Server
+          and PostgreSQL.
+        </p>
       </div>
     </section>
   );

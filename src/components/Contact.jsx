@@ -4,7 +4,7 @@ const LINKS = [
   { label:'Email',    val:'meetamin65@gmail.com',         href:'mailto:meetamin65@gmail.com' },
   { label:'LinkedIn', val:'meet-amin-898904160',          href:'https://linkedin.com/in/meet-amin-898904160' },
   { label:'GitHub',   val:'github.com/Meet03',            href:'https://github.com/Meet03' },
-  { label:'Location', val:'GTA, ON · Open to relocate (Canada-wide) · Open to remote', href:null },
+  { label:'Location', val:'Mississauga, ON · Hybrid or on-site across Ontario · Remote anywhere in Canada', href:null },
 ];
 
 export default function Contact() {
@@ -24,7 +24,7 @@ export default function Contact() {
         }}>
           <span style={{ fontFamily:'var(--mono)', fontSize:'11px', letterSpacing:'0.18em',
             textTransform:'uppercase', color:'var(--orange)', display:'block', marginBottom:'20px' }}>
-            Open to full-time work · Open to relocate
+            Open to full-time work · Ontario or remote-Canada
           </span>
           <h2 style={{ fontFamily:'var(--serif)', fontStyle:'italic',
             fontSize:'clamp(36px,6vw,72px)', fontWeight:700, color:'white',

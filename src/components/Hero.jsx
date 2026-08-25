@@ -30,7 +30,7 @@ export default function Hero({ theme }) {
         <div style={{ width:'36px', height:'1.5px', background:'var(--orange)' }} />
         <span style={{ fontFamily:'var(--mono)', fontSize:'12px', letterSpacing:'0.2em',
           textTransform:'uppercase', color:'var(--orange)' }}>
-          Backend Software Engineer
+          Senior Backend Software Engineer
         </span>
       </div>
 
@@ -74,13 +74,13 @@ export default function Hero({ theme }) {
             Infosys with{' '}
             <strong style={{ fontWeight: 600, color:'var(--text-head)' }}>
               zero critical post-deploy failures across 24 months
-            </strong>. Infosys and eMids in India; now independent contract work in the GTA.
+            </strong>. Infosys and eMids in India; now with eMids Canada in the GTA, leading a team of four.
           </p>
           <p style={{
             marginTop: '14px', fontFamily:'var(--mono)', fontSize:'12px',
             letterSpacing:'0.04em', color:'var(--orange)',
           }}>
-            Open to relocating anywhere in Canada · Seeking full-time opportunities
+            Ontario — hybrid or on-site · or remote anywhere in Canada · Seeking full-time
           </p>
         </div>
 

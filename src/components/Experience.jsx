@@ -3,18 +3,18 @@ import useInView from '../hooks/useInView';
 
 const JOBS = [
   {
-    role: 'Freelance Software Engineer',
-    company: 'Self-Employed',
-    location: 'Canada',
-    period: 'Jan 2025 – Present',
-    client: 'Small-business clients (restaurants, salon, convenience store) — names withheld under NDA',
+    role: 'Senior Software Engineer',
+    company: 'eMids Canada',
+    location: 'Mississauga, ON, Canada',
+    period: 'Jan 2025 - Present',
     points: [
-      'Built and shipped full-stack web applications from scratch — owning solution architecture, API design, and deployment — using React, Bootstrap, Java/Spring Boot, and REST APIs for small-business clients.',
-      "Took ownership of an existing client's underperforming production system, engineering targeted SQL indexing and query optimization to resolve performance bottlenecks.",
-      'Containerized and orchestrated services using Docker and Kubernetes, running production workloads on AWS.',
-      'Managed the full client lifecycle — requirements gathering, technical scoping, and delivery — across concurrent engagements with restaurant, salon, and retail clients.',
+      'Design and develop Java/Spring Boot microservices and RESTful APIs as part of a cross-functional engineering team.',
+      'Serve as technical lead for a team of 4 developers, running architecture and design reviews across service boundaries.',
+      'Collaborate with global stakeholders across development, QA, and product to deliver backend features in an Agile environment, coordinating across time zones.',
+      'Contribute to CI/CD pipeline improvements and containerized deployments using Docker and Kubernetes, with Jenkins-based pipelines.',
+      'Sustain automated unit and integration test coverage using JUnit and Mockito under a test-driven workflow.',
     ],
-    stack: ['Java', 'Spring Boot', 'React', 'Bootstrap', 'Docker', 'Kubernetes', 'AWS', 'SQL', 'REST APIs'],
+    stack: ['Java', 'Spring Boot', 'RESTful APIs', 'Docker', 'Kubernetes', 'Jenkins', 'JUnit', 'Mockito', 'Agile'],
   },
   {
     role: 'Senior Software Engineer',
@@ -141,6 +141,40 @@ function JobRow({ job, index, isOpen, onToggle, inView, isLast }) {
           </svg>
         </div>
       </button>
+
+      {/* Always-visible preview: the two strongest bullets stay on the page even
+          when the row is collapsed. Previously every achievement was hidden
+          behind a click, so a recruiter who never expanded Infosys never saw
+          "20+ production microservices, zero critical post-deploy failures". */}
+      {!isOpen && (
+        <div style={{
+          padding: '0 clamp(20px,3vw,32px) clamp(18px,2.5vw,24px)',
+          background: 'var(--bg-card)',
+        }}>
+          <ul style={{ listStyle:'none', padding:0, margin:0,
+            display:'flex', flexDirection:'column', gap:'10px' }}>
+            {job.points.slice(0, 2).map((p, k) => (
+              <li key={k} style={{ display:'flex', gap:'16px',
+                fontSize:'13.5px', color:'var(--text-dim)', lineHeight:1.65 }}>
+                <span aria-hidden="true" style={{ color:'var(--orange)', flexShrink:0,
+                  fontWeight:600, marginTop:'2px', fontSize:'12px' }}>→</span>
+                {p}
+              </li>
+            ))}
+          </ul>
+          {job.points.length > 2 && (
+            <button type="button" onClick={onToggle}
+              style={{
+                marginTop:'14px', background:'none', border:'none', padding:0,
+                font:'inherit', cursor:'pointer',
+                fontFamily:'var(--mono)', fontSize:'11px', letterSpacing:'0.08em',
+                textTransform:'uppercase', color:'var(--orange)',
+              }}>
+              + {job.points.length - 2} more · view stack
+            </button>
+          )}
+        </div>
+      )}
 
       {/* 0fr → 1fr animates to the content's natural height — no JS measurement,
           so bullet lists of any length expand fully instead of clipping. */}
