@@ -6,7 +6,7 @@ const GROUPS = [
   { cat: 'Backend & APIs',    items: ['Spring Boot', 'Spring MVC', 'Spring Security', 'Spring Data JPA', 'Spring Cloud', 'Hibernate', 'REST', 'SOAP / XML', 'OAuth 2.0', 'JWT'] },
   { cat: 'Architecture',      items: ['Microservices', 'System Design', 'API Gateway', 'Service Discovery', 'Circuit Breaker', 'Distributed Tracing', 'Event-driven', 'Idempotency & Reconciliation'] },
   { cat: 'Databases',         items: ['Oracle', 'PostgreSQL', 'MS SQL Server', 'MySQL', 'Data Modelling', 'Indexing', 'Query Optimization'] },
-  { cat: 'Cloud & DevOps',    items: ['AWS (EC2, S3, Lambda)', 'Azure', 'OpenShift', 'Docker', 'Kubernetes', 'Jenkins', 'CI/CD', 'Git', 'Maven'] },
+  { cat: 'Cloud & DevOps',    items: ['AWS (EC2, S3, Lambda)', 'Azure', 'Azure Data Factory', 'OpenShift', 'Docker', 'Kubernetes', 'Jenkins', 'CI/CD', 'Git', 'Maven'] },
   { cat: 'Testing & Quality', items: ['JUnit', 'Mockito', 'RestAssured', 'TDD', 'SonarQube', 'OpenAPI / Swagger', 'Postman'] },
   { cat: 'Personal Projects', items: ['Kafka', 'React', 'Node.js', 'Express.js', 'MongoDB', 'Redis', 'Socket.io', 'HTML5', 'CSS3'] },
 ];

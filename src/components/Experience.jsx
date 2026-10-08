@@ -14,7 +14,7 @@ const JOBS = [
       'Contribute to CI/CD pipeline improvements and containerized deployments using Docker and Kubernetes, with Jenkins-based pipelines.',
       'Sustain automated unit and integration test coverage using JUnit and Mockito under a test-driven workflow.',
     ],
-    stack: ['Java', 'Spring Boot', 'RESTful APIs', 'Docker', 'Kubernetes', 'Jenkins', 'JUnit', 'Mockito', 'Agile'],
+    stack: ['Java', 'Spring Boot', 'Spring Security', 'RESTful APIs', 'Azure Data Factory', 'Docker', 'Kubernetes', 'Jenkins', 'JUnit', 'Mockito', 'Agile'],
   },
   {
     role: 'Senior Software Engineer',
@@ -44,7 +44,7 @@ const JOBS = [
       'Integrated AWS Lambda and S3 to support event-driven architecture in high-traffic production environments.',
       'Developed Oracle SQL/PL-SQL stored procedures and Hibernate data layers for high-volume transactional processing; mentored junior developers through code review.',
     ],
-    stack: ['Java', 'Spring Boot', 'Spring MVC', 'Oracle', 'MS SQL Server', 'AWS Lambda', 'S3', 'Hibernate', 'JUnit', 'Mockito', 'RestAssured'],
+    stack: ['Java', 'Spring Boot', 'Spring MVC', 'Spring Security', 'Oracle', 'MS SQL Server', 'AWS Lambda', 'S3', 'Azure Data Factory', 'Hibernate', 'JUnit', 'Mockito', 'RestAssured'],
   },
   {
     role: 'Software Engineer — Systems Engineer Specialist',
@@ -56,7 +56,7 @@ const JOBS = [
       'Configured and maintained Apache Tomcat application servers with proactive system monitoring, reducing service outages by 25%.',
       'Administered Oracle, MS SQL Server, and MySQL databases with PL-SQL optimization alongside multi-threaded batch processing.',
     ],
-    stack: ['Java', 'Spring Boot', 'Apache Tomcat', 'Oracle', 'MS SQL Server', 'MySQL', 'PL-SQL'],
+    stack: ['Java', 'Spring Boot', 'Spring Security', 'Apache Tomcat', 'Oracle', 'MS SQL Server', 'MySQL', 'PL-SQL'],
   },
   {
     role: 'Data Engineer Intern',
