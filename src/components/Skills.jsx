@@ -3,12 +3,12 @@ import useInView from '../hooks/useInView';
 const GROUPS = [
   { cat: 'Languages',         items: ['Java 8 / 11 / 17', 'Java EE / J2EE', 'SQL', 'PL/SQL', 'JavaScript', 'TypeScript'] },
   { cat: 'Core Java',         items: ['Multithreading & Concurrency', 'Collections', 'Exception Handling', 'JVM Performance Tuning', 'Data Structures', 'Design Patterns', 'SOLID'] },
-  { cat: 'Backend & APIs',    items: ['Spring Boot', 'Spring MVC', 'Spring Security', 'Spring Data JPA', 'Spring Cloud', 'Hibernate', 'REST', 'SOAP / XML', 'OAuth 2.0', 'JWT'] },
-  { cat: 'Architecture',      items: ['Microservices', 'System Design', 'API Gateway', 'Service Discovery', 'Circuit Breaker', 'Distributed Tracing', 'Event-driven', 'Idempotency & Reconciliation'] },
+  { cat: 'Backend & APIs',    items: ['Spring Boot', 'Spring MVC', 'Spring Security', 'Spring Data JPA', 'Hibernate', 'REST', 'SOAP / XML'] },
+  { cat: 'Architecture',      items: ['Microservices', 'Distributed Systems', 'System Design', 'Event-driven'] },
   { cat: 'Databases',         items: ['Oracle', 'PostgreSQL', 'MS SQL Server', 'MySQL', 'Data Modelling', 'Indexing', 'Query Optimization'] },
   { cat: 'Cloud & DevOps',    items: ['AWS (EC2, S3, Lambda)', 'Azure', 'Azure Data Factory', 'OpenShift', 'Docker', 'Kubernetes', 'Jenkins', 'CI/CD', 'Git', 'Maven'] },
   { cat: 'Testing & Quality', items: ['JUnit', 'Mockito', 'RestAssured', 'TDD', 'SonarQube', 'OpenAPI / Swagger', 'Postman'] },
-  { cat: 'Personal Projects', items: ['Kafka', 'React', 'Node.js', 'Express.js', 'MongoDB', 'Redis', 'Socket.io', 'HTML5', 'CSS3'] },
+  { cat: 'Personal Projects', items: ['Kafka', 'React', 'Node.js', 'Express.js', 'MongoDB', 'Redis', 'JWT', 'Socket.io', 'HTML5', 'CSS3'] },
 ];
 
 export default function Skills() {

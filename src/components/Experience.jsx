@@ -8,11 +8,12 @@ const JOBS = [
     location: 'Mississauga, ON, Canada',
     period: 'Jan 2025 - Present',
     points: [
-      'Design and develop Java/Spring Boot microservices and RESTful APIs as part of a cross-functional engineering team.',
-      'Serve as technical lead for a team of 4 developers, running architecture and design reviews across service boundaries.',
-      'Collaborate with global stakeholders across development, QA, and product to deliver backend features in an Agile environment, coordinating across time zones.',
-      'Contribute to CI/CD pipeline improvements and containerized deployments using Docker and Kubernetes, with Jenkins-based pipelines.',
-      'Sustain automated unit and integration test coverage using JUnit and Mockito under a test-driven workflow.',
+      // Kept word-for-word with EMIDS_CANADA_BULLETS in F:\New Job Applications\resume_template_v2.js (Oct 8, 2026).
+      'Architect and deploy high-throughput Java 17 / Spring Boot microservices and RESTful APIs — 20+ services handling distributed transaction workflows across cross-functional domains.',
+      'Serve as technical lead for 4 engineers: establish design review standards, guide service boundary decoupling, and enforce automated testing conventions.',
+      'Implement containerized deployment strategies using Docker, Kubernetes, and Jenkins CI/CD pipelines, driving automated builds and zero-downtime rollouts.',
+      'Enforce strict code quality via JUnit and Mockito under a TDD paradigm to prevent critical post-deployment defects in production.',
+      'Integrate AI-assisted developer tooling (GitHub Copilot, Claude Code) for rapid unit test scaffolding and architectural review.',
     ],
     stack: ['Java', 'Spring Boot', 'Spring Security', 'RESTful APIs', 'Azure Data Factory', 'Docker', 'Kubernetes', 'Jenkins', 'JUnit', 'Mockito', 'Agile'],
   },
